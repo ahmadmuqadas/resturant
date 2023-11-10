@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+}
+
+nav {
+    background-color: rgb(129, 2, 255);
+    display: flex;
+    max-width: 1440px;
+    width: 100%;
+    min-height: 8rem;
+    justify-content: center;
+    align-items: flex-end;
+    margin: auto;
+
+
+}
+
+ul {
+    background-color: red;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: solid black 1px;
+
+}
+
+li {
+    margin: 0 1rem;
+}
+
+.home {
+    flex: 1;
+}
+
+.app {
+    min-height: 100vh;
+    background-color: rgb(0, 255, 221);
+    display: flex;
+    flex-direction: column;
+    
+}
