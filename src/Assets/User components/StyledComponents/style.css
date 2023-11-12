@@ -2,8 +2,14 @@
     margin: 0;
 }
 
+:root {
+    --whiteText: #f8f6f6;
+    --orange: #FF7715;
+    --red: rgb(90, 0, 0);
+  }
+
 nav {
-    background-color: rgb(129, 2, 255);
+
     display: flex;
     max-width: 1440px;
     width: 100%;
@@ -11,22 +17,24 @@ nav {
     justify-content: center;
     align-items: flex-end;
     margin: auto;
+    /* border-bottom: solid var(--whiteText) 1px; */
 
 
 }
 
 ul {
-    background-color: red;
     list-style-type: none;
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
-    border: solid black 1px;
+  
 
 }
 
 li {
     margin: 0 1rem;
+    color: var(--whiteText);
 }
 
 .home {
@@ -34,9 +42,52 @@ li {
 }
 
 .app {
-    min-height: 100vh;
-    background-color: rgb(0, 255, 221);
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
-    
+    background-image: url('../../Media/home\ background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.motion-text {
+    color: var(--whiteText);
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 7rem;
+    user-select: none;
+    font-family: Grandstander;
+}
+
+
+.cta {
+    border: solid black 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.menu-cta {
+    padding: 1rem 2rem;
+    margin-right: 1rem;
+    background-color: var(--red);
+    border: none;
+    color: var(--whiteText);
+    border-radius: 4px;
+}
+
+.cart {
+    max-width: 4rem;
+    margin-left: 1rem;   
+}
+.logo {
+    max-width: 5rem;
+    position: relative;
+}
+
+.logo::after {
+    content: 'Delicious';
+    color: white;
+    position: absolute;
+
 }
