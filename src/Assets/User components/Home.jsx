@@ -6,7 +6,9 @@ import { motion } from 'framer-motion';
 const Home = () => {
   return (
     <div className='home'>
+      <p className='intro-par'>Try it once and Come back everyday with Delicious!</p>
 <AnimatedTexts/>
+
 <div className='cta'>
 
 <motion.button whileTap={{ scale: 1.2 }} className='menu-cta'>
