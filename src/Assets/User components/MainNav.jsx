@@ -6,7 +6,7 @@ import Logo from '../Media/logo.png'
 const MainNav = () => {
 
 
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
 
 function toggler() {
@@ -30,7 +30,7 @@ const toggleCondition = {
       <p className='logo-name'>Delecious</p>
 </div>
         <ul className='navigation-ul' style={toggleCondition}>
-            <li><img src={Logo} alt="logo" className='logo' /></li>
+            {/* <li><img src={Logo} alt="logo" className='logo' /></li> */}
             <li>HOME</li>
             <li>ORDER NOW</li>
             <li>RESERVATION</li>

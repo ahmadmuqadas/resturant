@@ -9,9 +9,8 @@ function App() {
     {/* i added the app div to be able to add background image without using absolute positions*/}
       <div className="app">
     <Routes>
-
       <Route path="/" element={<MainNav/>}>
-      <Route path="/" element={<Home/>}/>
+      <Route index element={<Home/>}/>
       </Route>
     </Routes>
     </div>
