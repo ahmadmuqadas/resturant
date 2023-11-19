@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Logo from '../Media/logo.png'
+import Footer from './Footer';
 
 
 const MainNav = () => {
@@ -37,9 +38,11 @@ const toggleCondition = {
             <li>MENU</li>
             <li>FEEDBACK</li>
             <li>CONTACT</li>
+            <li>LOG IN</li>
         </ul>
     </nav>
     <Outlet/>
+    <Footer/>
     </>
   )
 }

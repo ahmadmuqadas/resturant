@@ -1,7 +1,8 @@
 import React from 'react'
 import dealImg from './../Media/deal.jpg' 
 import dealImg2 from './../Media/deal2.jpg'
-
+import serving from '../Media/delicious.png'
+import { motion } from 'framer-motion';
 const foodCategories = [
   {
     category: 'Appetizers',
@@ -84,14 +85,23 @@ const Deals = () => {
 
   const categories = foodCategories.map((category) => {
     return (
-      <div key={category.category} className='foods-cat'>
+      <motion.div
+      initial={{ y: 200, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.5, duration: 1 }} // Adjust the delay as needed
+      viewport={{ once: true }}
+
+      key={category.category} className='foods-cat'>
         <h2 className='cat-name'>{category.category}</h2>
           <div className='food-wrapper'>
           {category.foods.map((food) => (
             <div className='foods' key={food.name}>
          <div className='food-img-wrapper'>
           <img src={food.img} alt="" className='deal-img' />
-          <p key={food.name} className='food-item serving'>{food.serves}</p>
+    <span className='serving-span'>
+    <img src={serving} alt="" className='serving-img' />
+          <p key={food.name} className='food-item serving'>X {food.serves}</p>
+    </span>
           </div> 
 
          <div className="food-item-wrapper">
@@ -105,7 +115,7 @@ const Deals = () => {
         ))}
           </div>
         
-      </div>
+      </motion.div>
     );
   });
  

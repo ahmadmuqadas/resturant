@@ -24,7 +24,7 @@ const Home = () => {
     <Deals/>
     <div className='card-popup'>Card Empty</div>
     <GetApp/>
-    <MiniContact/>
+   
     </>
   )
 }
