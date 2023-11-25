@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 import Logo from '../Media/logo.png'
 import Footer from './Footer';
 
@@ -32,13 +32,13 @@ const toggleCondition = {
 </div>
         <ul className='navigation-ul' style={toggleCondition}>
             {/* <li><img src={Logo} alt="logo" className='logo' /></li> */}
-            <li>HOME</li>
-            <li>ORDER NOW</li>
-            <li>RESERVATION</li>
-            <li>MENU</li>
-            <li>FEEDBACK</li>
-            <li>CONTACT</li>
-            <li>LOG IN</li>
+           <NavLink><li>HOME</li></NavLink>
+           <NavLink><li>ORDER NOW</li></NavLink>
+           <NavLink><li>RESERVATION</li></NavLink>
+           <NavLink><li>MENU</li></NavLink>
+           <NavLink><li>FEEDBACK</li></NavLink>
+           <NavLink><li>CONTACT</li></NavLink>
+           <NavLink to='login'><li>LOG IN</li></NavLink>
         </ul>
     </nav>
     <Outlet/>
