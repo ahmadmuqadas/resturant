@@ -3,9 +3,11 @@ import {AnimatedTexts, Deals } from './UserImports'
 import cart from '../Media/cart.png'
 import { motion } from 'framer-motion';
 import GetApp from './GetApp';
-import MiniContact from './MiniContact';
+
 
 const Home = () => {
+
+
   return (
   
     <>

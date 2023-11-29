@@ -411,3 +411,34 @@ footer {
 }
 
 
+/* ADMIN */
+
+.adminlayout {
+    max-width: 1920px;
+}
+
+
+.adminnaviigation-wrapper {
+    position: relative;
+    min-height: 100vh;
+    width: 12%;
+    border-right: solid rgba(0, 0, 0, 0.219) 1px;
+    display: flex;
+    margin-left: .5rem;
+    min-width: 10rem;
+    width: 5rem !important;
+    
+    
+}
+
+.adminnaviigation-wrapper ul {
+    list-style-type: none;
+}
+
+.adminnaviigation-wrapper ul li {
+    margin: 1rem;
+} 
+
+.adminlayout {
+    display: flex;
+}
