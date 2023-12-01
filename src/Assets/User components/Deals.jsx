@@ -1,41 +1,53 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import serving from '../Media/delicious.png'
 import { motion } from 'framer-motion';
 import { database } from '../../FirebaseConfig';
 import { get, ref } from 'firebase/database';
+import { useLoaderData } from 'react-router-dom';
+
+
+
+
+async function fetchDatabase() {
+  const dbRef = ref(database);
+  try {
+    const snapshot = await get(dbRef);
+
+    if (snapshot.exists()) {
+      const retData = snapshot.val();
+      return retData;
+    } else {
+    
+      return null;
+    }
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
+
+
+export function loader() {
+  return fetchDatabase();
+}
+
 
 
 
 
 
 const Deals = () => {
-  const dbRef = ref(database);
+ 
 
 
-  useEffect(() => {
-    get(dbRef).then((snapshot) => {
-      if (snapshot.exists()) {
-        const retData = snapshot.val();
-        setMenu(retData)
-      }
-      else {
-        console.log('no data');
-      }
-    }).catch ((err) => {
-    console.log(err);
-    })
-    
-  }, [])
-  
+const menu = useLoaderData();
 
+const menuArray = menu.foodCategories;
 
+  const categories = menuArray.map((category) => {
 
-  const [ menu, setMenu] = useState([]);
-
-const menuArray = menu.foodCategories
-
-  const categories = menuArray && menuArray.map((category) => {
     return (
+      
       <motion.div
       initial={{ y: 200, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}

@@ -1,7 +1,8 @@
 import React from 'react'
-import {AnimatedTexts, Deals } from './UserImports'
+import {AnimatedTexts} from './UserImports'
 import cart from '../Media/cart.png'
 import { motion } from 'framer-motion';
+import Deals, {loader} from './Deals';
 import GetApp from './GetApp';
 
 
