@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const AnimatedTexts = () => {
   const texts = [
-    'Open 24/7',
+    '24/7',
     'Cashless Payment',
     '30 Mins Delivery',
     'Call 3423424232'
@@ -16,13 +16,12 @@ const AnimatedTexts = () => {
       setTimer((prev) => (prev + 1) % texts.length);
     }, 5000);
 
-    // Clear the interval when the component is unmounted
-    return () => clearInterval(intervalId);
-  }, [texts.length]); // Include texts.length in the dependency array to handle changes in the texts array
 
+    return () => clearInterval(intervalId);
+  }, [texts.length]); 
   return (
     <motion.p
-      key={timer} // Use key to force remount on timer change
+      key={timer}
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{

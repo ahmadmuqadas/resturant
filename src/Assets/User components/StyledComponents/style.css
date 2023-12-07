@@ -1,11 +1,36 @@
-* {
+
+@font-face {
+    font-family: 'PTSansNarrow';
+    src: local('PTSansNarrow'), url('../../Fonts/PTSansNarrow-Regular.ttf') format('woff2');
+    /* Add additional formats if needed, and adjust the file path accordingly */
+    font-weight: 400;
+    font-style: normal;
+  }
+  * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'YourSelectedFont', sans-serif;
 }
+
+
+:root {
+    /* Action Color: */
+    --red: #d62828; 
+    /* Main Colors: */
+    --orange: #f77f00; 
+    --yellow: #fcbf49;
+    --white: #eae2b7;
+    --black : #3f3400;
+
+
+  }
+  
+  
 
 a {
     text-decoration: none;
+    
 }
 
 
@@ -25,9 +50,8 @@ nav {
     position: sticky;
     top: 0;
     max-width: 1920px;
-    margin: auto;
     z-index: 1;
-    background-color: rgb(70, 47, 2);
+    height: 0rem;
 }
 
 
@@ -38,6 +62,7 @@ nav {
     align-items: center;
     padding: 0 1rem;
     min-height: 5rem;
+    /* i will choose later here the navbar to have background intially or not */
 
 }
 .mobile-logo {
@@ -50,9 +75,11 @@ nav {
     z-index: 1;
     right: 0;
     left: 0; 
-    padding: 0 1rem 1rem 1rem;
+    padding: 1rem;
     list-style-type: none;
     background-color: transparent;
+    transition: ease-in-out 0.1s;
+
 }
 
 .navigation-ul li {
@@ -68,10 +95,10 @@ nav {
 }
 
 .menu-cta {
-    background-color: red;
+    background-color: var(--red);
     border: none;
     padding: 1rem;
-    color: rgb(241, 237, 228);
+    color: var(--white)
 }
 
 .cart {
@@ -96,22 +123,26 @@ nav {
 
 .motion-text {
 
-    font-size: 2rem;
+    font-size: 3rem;
     /* padding-top: 10rem; */
-    color: white;
+    color: #faf4c4;
 }
 
 .logo {
     display: none;
 }
 
+.logo-name {
+    color: var(--white);
+}
+
 .intro-par {
     margin-top: 5rem;
     text-wrap: wrap;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 2rem;
     padding: 1rem;
-    color: white;
+    color: var(--yellow);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -137,6 +168,7 @@ nav {
 
 .cat-name {
     padding: 2rem 0;
+    color: var(--black);
 }
 
 .food-wrapper {
@@ -194,7 +226,7 @@ font-weight: bold;
 .select-btn {
     border: none;
     text-align: center;
-    background-color: rgb(245, 219, 133);
+    background-color: var(--yellow);
     margin: auto;
     padding: 1rem 2rem;
     border-radius: 1rem;
@@ -202,7 +234,7 @@ font-weight: bold;
 }
 
 .card-popup {
-  background-color: rgb(245, 219, 133); 
+  background-color: var(--yellow);
   text-align: center;
   padding: 1rem;
   position: sticky;
@@ -226,9 +258,7 @@ font-weight: bold;
     margin-top: 1rem;
 }
 
-.get-app-wrapper p, h2 {
-    /* color: white; */
-} 
+
 .get-app-wrapper button {
     background-color: black;
     color: white;
@@ -376,18 +406,19 @@ footer {
     .navigation-ul {
         display: flex !important;
         justify-content: center;
-        padding: 2rem;
-        background-color: transparent;
-        /* later to be chnaged to sticky */
-
-   
-    
+        padding-top: 1.5rem;
+        align-items: center;
+        
     }
 
     .navigation-ul li {
-        margin: 0 1rem;
-        color: white;
-        
+        margin: 0 .9rem;
+        color: var(--white);        
+    }
+
+    .navigation-ul li:hover {
+        color: white; 
+        transition: ease-in-out 0.1s;       
     }
 
     .burger-container {
