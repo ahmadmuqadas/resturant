@@ -63,7 +63,7 @@ nav {
     align-items: center;
     padding: 0 1rem;
     min-height: 5rem;
-    background-color: red;
+    background-color: rgba(102, 68, 5, 0.479);
     /* i will choose later here the navbar to have background intially or not */
 
 }
@@ -124,7 +124,7 @@ nav {
 
 .motion-text {
 
-    font-size: 3rem;
+    font-size: 1.5em;
     /* padding-top: 10rem; */
     color: #faf4c4;
 }
@@ -134,7 +134,9 @@ nav {
 }
 
 .logo-name {
-    color: var(--white);
+    color: white;
+    font-size: 1.3rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .intro-par {
@@ -417,6 +419,9 @@ footer {
     padding: 1rem;
 }
 
+.navigation-ul li {
+    color: var(--white);       
+}
 
 @media screen AND (min-width: 768px) {
     .navigation-ul {
@@ -428,8 +433,7 @@ footer {
     }
 
     .navigation-ul li {
-        margin: 0 .9rem;
-        color: var(--white);        
+        margin: 0 .9rem;     
     }
 
     .navigation-ul li:hover {
