@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
+import React, { useEffect, useMemo, useState } from 'react'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import Logo from '../Media/logo.png'
 import Footer from './Footer';
 
@@ -7,7 +7,13 @@ import Footer from './Footer';
 
 
 
+
+
+
 const MainNav = () => {
+
+  const {pathname} = useLocation();
+
 
 
   const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
@@ -36,40 +42,47 @@ return !prev
 })
 }
 
-const toggleCondition = {
-  display: toggle ? 'block' : 'none',
-  background: scrollPos > 50 || isSmallScreen === true ? ' #f77f00' : 'transparent',
-}
-
-
-const conditionalStyles = {
+const toggleCondition = useMemo(() => {
+  return {
+    display: toggle ? 'block' : 'none',
+    background: scrollPos > 50 || isSmallScreen === true ? ' #f77f00' : 'transparent',
+   
+    
   
 
+  };
+}, [toggle, scrollPos, isSmallScreen]);
 
+const navStyles = {
+  position: pathname !== '/' ? 'static' : 'sticky',
+  height: pathname !== '/' ? '5rem' : '0',
 }
 
-
-
+const liStyles = {
+  color: pathname !== '/' ? 'black' : '',
+}
   return (
     <>
-    <nav >
+    <nav style={navStyles} >
 <div className="burger-container">
 <img src={Logo} alt="logo" className='mobile-logo' onClick={toggler} />
       <p className='logo-name'>Delecious</p>
 </div>
         <ul className='navigation-ul' style={toggleCondition}>
-            {/* <li><img src={Logo} alt="logo" className='logo' /></li> */}
-           <NavLink><li>HOME</li></NavLink>
-           <NavLink><li>ORDER NOW</li></NavLink>
-           <NavLink><li>RESERVATION</li></NavLink>
-           <NavLink><li>MENU</li></NavLink>
-           <NavLink><li>FEEDBACK</li></NavLink>
-           <NavLink><li>CONTACT</li></NavLink>
-           <NavLink to='login'><li>LOG IN</li></NavLink>
+        
+           <NavLink><li style={liStyles}>HOME</li></NavLink>
+           <NavLink><li style={liStyles}>ORDER NOW</li></NavLink>
+           <NavLink><li style={liStyles}>RESERVATION</li></NavLink>
+           <NavLink><li style={liStyles}>MENU</li></NavLink>
+           <NavLink><li style={liStyles}>FEEDBACK</li></NavLink>
+           <NavLink><li style={liStyles}>CONTACT</li></NavLink>
+           <NavLink to='login'><li style={liStyles}>LOG IN</li></NavLink>
         </ul>
     </nav>
+
     <Outlet/>
     <Footer/>
+    
     </>
   )
 }

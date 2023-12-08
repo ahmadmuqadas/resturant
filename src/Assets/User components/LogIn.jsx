@@ -30,6 +30,7 @@ const LogIn = () => {
 
 
   return (
+    <>
     <div className='login-wrapper'>
       <div className="auth">
         <p className='login-txt'>Log in to Delicious</p>
@@ -51,13 +52,14 @@ const LogIn = () => {
             
           />
           <button type='submit' className='login-btn'>Login</button>
-          <p>Or Continue with:</p>
-          <button type='button' className='google-btn'><img src={googleImg} className='google-icon' alt="" />Google</button>
+          <p className='notsign-txt'>Or Continue with:</p>
+          <button type='button' className='google-btn'>Google</button>
           <p className='notsign-txt'>Not Signed Up yet?</p>
           <Link className='create-ac-txt'>Create an Account</Link>
         </Form>
       </div>
     </div>
+    </>
   );
 }
 
