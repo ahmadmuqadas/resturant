@@ -329,6 +329,7 @@ footer {
     margin: auto;
     display: flex;
     justify-content: center;
+    align-items: center;
     background-image: url('../../Media/lemon.png');
     background-repeat: no-repeat;
     background-size: 60%;
