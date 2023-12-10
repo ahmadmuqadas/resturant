@@ -51,6 +51,7 @@ nav {
     top: 0;
     max-width: 1920px;
     z-index: 2;
+    margin: auto;
     
 
 }
@@ -237,7 +238,7 @@ font-weight: bold;
 }
 
 .card-popup {
-  background-color: var(--yellow);
+  background-color: rgb(17, 11, 1);
   text-align: center;
   padding: 1rem;
   position: sticky;
@@ -245,6 +246,10 @@ font-weight: bold;
   max-width: 1920px;
   margin: auto;
 }
+
+.card-txt {
+    color: var(--white);
+} 
 
 .playstore-btn, .applestore-btn {
     padding: 1rem;
@@ -347,6 +352,7 @@ footer {
 .login-form {
     display: flex;
     flex-direction: column;
+    min-height:60%;;
 }
 
 .auth {
@@ -357,7 +363,7 @@ footer {
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 80%;
+    min-height: 400px;
 }
 
 .auth-input {

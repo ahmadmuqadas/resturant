@@ -25,7 +25,7 @@ const Home = () => {
 </div>
     </div>
     <Deals/>
-    <div className='card-popup'>Card Empty</div>
+    <div className='card-popup'><p className='card-txt'>Card Empty</p></div>
     <GetApp/>
    
     </>
