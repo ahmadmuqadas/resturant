@@ -159,6 +159,7 @@ nav {
     max-width: 1440px;
     margin: auto;
     justify-content: center;
+    position: relative;
 }
 
 .foods-cat {
@@ -236,6 +237,8 @@ font-weight: bold;
     border-radius: 1rem;
     margin-bottom: 1rem;
 }
+
+
 
 .card-popup {
   background-color: rgb(17, 11, 1);
@@ -429,6 +432,45 @@ footer {
 .navigation-ul li {
     color: var(--white);       
 }
+
+.modal {
+    min-height: 80vh;
+    width: 100%;
+    background-color: orange;
+    position: sticky;
+    bottom: 5rem;
+}
+
+.closeImg {
+    max-width: 1.5rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+.closeImg:hover {
+    max-width: 1.6rem;
+    transition: all ease-in-out 0.1s;
+    cursor: pointer;
+}
+
+.delievery-wrapper {
+    background-color: red;
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.delievery-wrapper > div {
+background-color: blue;
+min-width: 90%;
+min-height: 10rem;
+}
+
+
 
 @media screen AND (min-width: 768px) {
     .navigation-ul {
