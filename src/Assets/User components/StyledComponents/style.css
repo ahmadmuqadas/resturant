@@ -189,11 +189,9 @@ nav {
 .foods {
   display: flex;
   flex-direction: column;
-  width: 45%;
   border-radius: 1rem;
   margin-top: 1rem;
-  max-width: 20rem;
-
+ max-width: 12rem;
   
     
 }
