@@ -2,8 +2,16 @@ import React, { useEffect, useMemo, useState, useRef } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import Logo from '../Media/logo.png';
 import Footer from './Footer';
+import { signOut } from "firebase/auth";
+import {auth} from '../../FirebaseConfig'
+
+// later ill use seprate file for signout: 
+
+
+
 
 const MainNav = ({userLogStatus}) => {
+
 
   const { pathname } = useLocation();
   const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
@@ -70,6 +78,14 @@ const MainNav = ({userLogStatus}) => {
     color: pathname !== '/' ? 'black' : '',
   };
 
+
+  function logOut() {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+  }
   return (
     <>
       {/* Navigation container */}
@@ -99,11 +115,17 @@ const MainNav = ({userLogStatus}) => {
             <li style={liStyles}>CONTACT</li>
           </NavLink>
          
-         {userLogStatus ? <NavLink to="login">
-            <li style={liStyles}>LOG OUT</li>
-          </NavLink> : <NavLink to="login">
-            <li style={liStyles}>LOG IN</li>
-          </NavLink> }
+         {userLogStatus ? 
+         <li>
+          <ul>
+            <li>user</li>
+            <li onClick={logOut}>Log out</li>
+          </ul>
+         </li>
+           :
+          <NavLink to="login">  <li style={liStyles}>LOG IN</li></NavLink>
+        
+          }
          
         </ul>
       </nav>

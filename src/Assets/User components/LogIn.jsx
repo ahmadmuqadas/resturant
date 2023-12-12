@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
-import { Form, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Form, Link, redirect, useNavigate } from 'react-router-dom';
 import googleImg from '../Media/search.png';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, } from 'firebase/auth';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../FirebaseConfig';
+
 
 
 
 export async function LoginAction({request}) {
 
-  let formData = await request.formData();
+
+let formData = await request.formData();
 const email = formData.get('email');
 const password = formData.get('password');
 const confirmPassword = formData.get('confirmPassword');
-
 // console.log(password, confirmPassword);
 if (password !== confirmPassword) {
   // console.log('password does not match');
@@ -20,52 +21,62 @@ if (password !== confirmPassword) {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     // console.log(userCredential.user);
-    return userCredential;
     
   } catch (error) {
 console.log(error);
   }
 }
 
+
 return null;
 
 }
 
-function googlePopup () {
-  const provider = new GoogleAuthProvider();
 
-signInWithPopup(auth, provider).then((result) => {
-  const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-})
+const LogIn = ({userLogStatus}) => {
 
-console.log('function is called');
+  const navigate = useNavigate();
 
-}
-
-
-const LogIn = (props) => {
+  useEffect(() => {
+    if (userLogStatus) {
+        navigate('/'); // or any other page for logged-in users
+    } else {
+        navigate('/login'); // or wherever you want non-authenticated users to go
+    }
+}, [userLogStatus]);
+  
   const [isCreateAccount, setIsCreateAccount] = useState(false);
 
   const handleToggle = () => {
     setIsCreateAccount((prev) => !prev);
   };
+  
 
+  function googlePopup () {
 
-
+    const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider).then((result) => {
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      // const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+  })
+  
+  
+  }
+  
+  
   return (
     <>
       <div className='login-wrapper'>
@@ -132,7 +143,7 @@ const LogIn = (props) => {
                 Login
               </button>
               <p className='notsign-txt'>Or Continue with:</p>
-              <button type='button' className='google-btn'>Google</button>
+              <button type='button' className='google-btn' onClick={googlePopup}>Google</button>
               <p className='notsign-txt'>Not Signed Up yet?</p>
               <Link className='create-ac-txt' onClick={handleToggle}>
                 Create an Account

@@ -28,9 +28,6 @@ const [userlog, setUserLog]= useState(null);
     })
   },[])
 
-  
-console.log(userlog);
-
 
   const takeRouter = createBrowserRouter(createRoutesFromElements(
     <>
@@ -38,13 +35,9 @@ console.log(userlog);
     <Route path="/"   element={<MainNav userLogStatus={userlog ? true : false} />} >
     <Route path="adminlogin" action={action} element={<AdminLogin/>}/>
       <Route index element={<Home />} loader={loader} errorElement={<h1>Oh! there was an error!</h1>} />
-      <Route path="login" element={<LogIn />} action={LoginAction}/>
+      <Route path="login" element={<LogIn userLogStatus={userlog ? true : false} />} action={LoginAction}  />
     </Route>
     <Route path="admin" element={<AdminLayout />} loader={async () => {
-      const loggedIn = false;
-
-
-      return loggedIn == false ?  redirect('/adminlogin') : null
     }}>
       <Route index element={<Dashboard />} />
       <Route path="editdeals" element={<EditDeals />} />
