@@ -1,10 +1,10 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useState } from 'react'
 import serving from '../Media/delicious.png'
 import { motion } from 'framer-motion';
 import { database } from '../../FirebaseConfig';
 import { get, ref } from 'firebase/database';
 import { useLoaderData } from 'react-router-dom';
-import closeImg from '../Media/close.png'
+import Modal from './utils/Modal';
 
 
 
@@ -35,20 +35,16 @@ export function loader() {
 
 const Deals = () => {
 const menu = useLoaderData();
+
 const [isModalOpen, SetIsModalOpen] = useState(false);
 
-const modalStyle = {
-  display: isModalOpen ? 'block' : 'none'
+      
+function toggleModal() {
+  SetIsModalOpen((prev) => !prev)
 }
 
-function modalOpener() {
-  SetIsModalOpen((prev) => !prev)
-}
 const menuArray = menu.foodCategories;
-function modal() {
-  console.log('function fired');
-  SetIsModalOpen((prev) => !prev)
-}
+
   const categories = menuArray.map((category) => {
 
     return (
@@ -75,7 +71,7 @@ function modal() {
               <div className="food-item-wrapper">
                 <p className='food-item food-name'>{food.name}</p>
                 <p className='food-item food-price'>{food.price}</p>
-                <button className='select-btn' onClick={modal}>Select</button>
+                <button className='select-btn' onClick={toggleModal}>Select</button>
               
               </div>
             </div>
@@ -88,17 +84,7 @@ function modal() {
   return (
     <div className='deals-wrapper'>
       {categories}
-      <div className='modal' style={modalStyle}>
-        <div className="delievery-wrapper">
-          <div className="delivery">
-            delivery
-          </div>
-          <div className="carryOut">
-            carry out
-          </div>
-        </div>
-        <img src={closeImg} className='closeImg' alt="close" onClick={modalOpener}/>
-      </div>
+     <Modal isModalOpen={isModalOpen} toggleModal={toggleModal}/>
       </div>
   )
 }

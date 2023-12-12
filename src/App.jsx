@@ -38,6 +38,8 @@ const [userlog, setUserLog]= useState(null);
       <Route path="login" element={<LogIn userLogStatus={userlog ? true : false} />} action={LoginAction}  />
     </Route>
     <Route path="admin" element={<AdminLayout />} loader={async () => {
+    
+    return null
     }}>
       <Route index element={<Dashboard />} />
       <Route path="editdeals" element={<EditDeals />} />

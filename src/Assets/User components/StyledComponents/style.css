@@ -383,17 +383,6 @@ footer {
 }
 
 .google-btn {
-    /* width: 90%;
-    height: 3rem;
-    background-color: #DC584D;
-    border: none;
-    color: white;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem; */
-
     background-color: #4285f4;
   color: #fff;
   padding: 10px;
@@ -434,13 +423,92 @@ footer {
 }
 
 .modal {
-    min-height: 80vh;
-    width: 100%;
-    background-color: orange;
+    /* min-width: 15rem; */
+    background-color: var(--white);
     position: sticky;
-    bottom: 5rem;
+    bottom: 3rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
+.count {
+    background-color: var(--yellow);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    min-height: 5rem;
+    padding: 1rem;
+}
+
+
+
+.order-C-txt {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    text-align: center;
+}
+
+.instructios  {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instructios input {
+    width: 100%;
+    min-height: 5rem;
+}
+
+.counter {
+    text-align: center;
+}
+.check-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0;
+} 
+.check-btn-ind {
+    width: 25%;
+}
+
+/* CSS */
+.button-16 {
+  background-color: #f8f9fa;
+  border: 1px solid #f8f9fa;
+  border-radius: 4px;
+  color: #3c4043;
+  cursor: pointer;
+  font-family: arial,sans-serif;
+  font-size: 14px;
+  height: 36px;
+  line-height: 27px;
+  min-width: 54px;
+  padding: 0 16px;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: pre;
+}
+
+.button-16:hover {
+  border-color: #dadce0;
+  box-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
+  color: #202124;
+}
+
+.button-16:focus {
+  border-color: #4285f4;
+  outline: none;
+}
+
+.count > p {
+    font-size: 2rem;
+}
 .closeImg {
     max-width: 1.5rem;
     position: absolute;
@@ -455,21 +523,34 @@ footer {
 }
 
 .delievery-wrapper {
-    background-color: red;
-    margin-top: 5rem;
+
+    margin-top: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem;
+    gap: .1rem;
 }
 
 .delievery-wrapper > div {
-background-color: blue;
-min-width: 90%;
+width: 10%;
 min-height: 10rem;
+flex-grow: 1;
+margin: 1rem;
+display: flex;
+justify-content: center;
+align-items: center;
+box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+&:hover {
+    cursor: pointer;
 }
+}
+.delievery-wrapper > div img {
+    max-width: 4rem;
+    }
 
+    .delievery-wrapper > div p {
+        font-size: 1.2rem;
+    }
 
 
 @media screen AND (min-width: 768px) {
