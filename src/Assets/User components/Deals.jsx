@@ -37,11 +37,17 @@ const Deals = () => {
 const menu = useLoaderData();
 
 const [isModalOpen, SetIsModalOpen] = useState(false);
+const [foodState, setFoodState] = useState(null);
 
       
-function toggleModal() {
+function toggleModal(foodName) {
   SetIsModalOpen((prev) => !prev)
+ 
+  setFoodState(foodName);
+
 }
+
+
 
 const menuArray = menu.foodCategories;
 
@@ -69,9 +75,10 @@ const menuArray = menu.foodCategories;
                 </span>
               </div>
               <div className="food-item-wrapper">
-                <p className='food-item food-name'>{food.name}</p>
-                <p className='food-item food-price'>{food.price}</p>
-                <button className='select-btn' onClick={toggleModal}>Select</button>
+                <p className='food-item food-name'>{ food.name}</p>
+                <p className='food-item food-price'>{`$${food.price}`}</p>
+                <button className='select-btn' onClick={() => toggleModal(food.name)}>Select</button>
+
               
               </div>
             </div>
@@ -81,10 +88,15 @@ const menuArray = menu.foodCategories;
     );
   });
  
+// Problems:
+  // button function opens toggle buttton modal does not know what is selected.
+  // add more does not update the Card Popup.
+
+
   return (
     <div className='deals-wrapper'>
       {categories}
-     <Modal isModalOpen={isModalOpen} toggleModal={toggleModal}/>
+     <Modal isModalOpen={isModalOpen} toggleModal={toggleModal} foodState={foodState} />
       </div>
   )
 }

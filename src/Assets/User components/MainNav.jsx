@@ -1,20 +1,15 @@
-import React, { useEffect, useMemo, useState, useRef } from 'react';
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
-import Logo from '../Media/logo.png';
-import Footer from './Footer';
+import React, { useEffect, useMemo, useState, useRef } from "react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
+import Logo from "../Media/logo.png";
+import Footer from "./Footer";
 import { signOut } from "firebase/auth";
-import {auth} from '../../FirebaseConfig'
+import { auth } from "../../FirebaseConfig";
 
-// later ill use seprate file for signout: 
+// later ill use seprate file for signout:
 
-
-
-
-const MainNav = ({userLogStatus}) => {
-
-
+const MainNav = ({ userLogStatus }) => {
   const { pathname } = useLocation();
-  const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+  const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
 
   // State to manage the navigation panel toggle
   const [toggle, setToggle] = useState(false);
@@ -44,13 +39,13 @@ const MainNav = ({userLogStatus}) => {
     };
 
     // Add event listeners for scroll and click outside
-    window.addEventListener('scroll', handleScroll);
-    document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
 
     // Clean up event listeners on component unmount
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -62,71 +57,76 @@ const MainNav = ({userLogStatus}) => {
   // Memoized object for dynamic styling based on toggle, scroll position, and screen size
   const toggleCondition = useMemo(() => {
     return {
-      display: toggle ? 'block' : 'none',
-      background: scrollPos > 50 || isSmallScreen ? '#f77f00' : 'transparent',
+      display: toggle ? "block" : "none",
+      background: scrollPos > 50 || isSmallScreen ? "#f77f00" : "transparent",
     };
   }, [toggle, scrollPos, isSmallScreen]);
 
   // Styles for the navigation container
   const navStyles = {
-    position: pathname !== '/' ? 'static' : 'sticky',
-    height: pathname !== '/' ? '5rem' : '0',
+    position: pathname !== "/" ? "static" : "sticky",
+    height: pathname !== "/" ? "5rem" : "0",
   };
 
   // Styles for navigation link items
   const liStyles = {
-    color: pathname !== '/' ? 'black' : '',
+    color: pathname !== "/" || scrollPos > 50 ? '#3f3400' : "",
   };
 
-
   function logOut() {
-    signOut(auth).then(() => {
-      // Sign-out successful.
-    }).catch((error) => {
-      // An error happened.
-    });
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
   }
   return (
     <>
       {/* Navigation container */}
       <nav style={navStyles} ref={navRef}>
         <div className="burger-container">
-          <img src={Logo} alt="logo" className="mobile-logo" onClick={toggler} />
+          <img
+            src={Logo}
+            alt="logo"
+            className="mobile-logo"
+            onClick={toggler}
+          />
           <p className="logo-name">Delecious</p>
         </div>
         {/* Navigation links */}
         <ul className="navigation-ul" style={toggleCondition}>
-          <NavLink>
+          <NavLink to='/'>
             <li style={liStyles}>HOME</li>
           </NavLink>
-          <NavLink>
-            <li style={liStyles}>ORDER NOW</li>
-          </NavLink>
-          <NavLink>
+      
+          <NavLink to='reservation'>
             <li style={liStyles}>RESERVATION</li>
           </NavLink>
-          <NavLink>
-            <li style={liStyles}>MENU</li>
-          </NavLink>
-          <NavLink>
-            <li style={liStyles}>FEEDBACK</li>
-          </NavLink>
-          <NavLink>
+          <NavLink to='contact'>
             <li style={liStyles}>CONTACT</li>
           </NavLink>
-         
-         {userLogStatus ? 
-         <li>
-          <ul>
-            <li>user</li>
-            <li onClick={logOut}>Log out</li>
-          </ul>
-         </li>
-           :
-          <NavLink to="login">  <li style={liStyles}>LOG IN</li></NavLink>
-        
-          }
-         
+          <NavLink to='about'>
+            <li style={liStyles}>ABOUT</li>
+          </NavLink>
+          <NavLink to='admin'>
+            <li style={liStyles}>ADMIN</li>
+          </NavLink>
+
+          {userLogStatus ? (
+            <li>
+              <ul>
+                <li>user</li>
+                <li onClick={logOut}>Log out</li>
+              </ul>
+            </li>
+          ) : (
+            <NavLink to="login">
+              {" "}
+              <li style={liStyles}>LOG IN</li>
+            </NavLink>
+          )}
         </ul>
       </nav>
 

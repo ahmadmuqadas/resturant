@@ -2,15 +2,21 @@
 @font-face {
     font-family: 'PTSansNarrow';
     src: local('PTSansNarrow'), url('../../Fonts/PTSansNarrow-Regular.ttf') format('woff2');
-    /* Add additional formats if needed, and adjust the file path accordingly */
+    font-weight: 400;
+    font-style: normal;
+
+    font-family: 'delicious-default';
+    src: local('delicious-default'), url('../../Fonts//ShadowsIntoLight-Regular.ttf') format('woff2');
     font-weight: 400;
     font-style: normal;
   }
+
   * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: 'YourSelectedFont', sans-serif;
+    font-family: 'delicious-default', sans-serif;
+    
 }
 
 
@@ -37,6 +43,7 @@ a {
 body {
     min-width: 360px;
     overflow-x: none;
+    background-color:  #fff9ee ;
 }
 
 button:hover {
@@ -86,6 +93,7 @@ nav {
 
 .navigation-ul li {
     margin: 1rem 0;
+    font-family: 'PTSansNarrow';
 }
 
 
@@ -103,10 +111,23 @@ nav {
     color: var(--white)
 }
 
+.card-wrapper {
+    position: relative;
+}
+
 .cart {
     max-width: 5rem;
     align-items: center;
     margin-top: 1rem;
+}
+
+.card-count {
+    position: absolute;
+    background-color: var(--white);
+    padding: .5rem .7rem;
+    border-radius: 100vmax;
+    left: 0;
+    top: 15px;
 }
 
 .home {
@@ -156,7 +177,8 @@ nav {
     min-height: 100vh;
     display: flex;
     flex-wrap: wrap;
-    max-width: 1440px;
+    width: 100%;
+    max-width: 1920px;
     margin: auto;
     justify-content: center;
     position: relative;
@@ -212,6 +234,7 @@ nav {
 
 .food-price {
 font-weight: bold;
+font-family: 'PTSansNarrow';
 }
 
 .deal-img {
@@ -222,7 +245,7 @@ font-weight: bold;
 }
 
 .food-name {
-    font-size: 1.3rem;
+    font-size: 1rem;
     text-align: center;
 }
 
@@ -238,21 +261,6 @@ font-weight: bold;
     margin-bottom: 1rem;
 }
 
-
-
-.card-popup {
-  background-color: rgb(17, 11, 1);
-  text-align: center;
-  padding: 1rem;
-  position: sticky;
-  bottom: 0rem;
-  max-width: 1920px;
-  margin: auto;
-}
-
-.card-txt {
-    color: var(--white);
-} 
 
 .playstore-btn, .applestore-btn {
     padding: 1rem;
@@ -370,10 +378,6 @@ footer {
 }
 
 .auth-input {
-    /* display: block;
-    width: 90%;
-    margin: auto;
-    height: 3rem; */
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -446,6 +450,7 @@ footer {
     grid-column-start: 1;
     grid-column-end: 5;
     text-align: center;
+    margin: 1rem 0;
 }
 
 .instructios  {
@@ -530,7 +535,28 @@ footer {
     align-items: center;
     gap: .1rem;
 }
+.instruction {
+    
+    position: relative;
+    cursor: text;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 16px;
+    height: 48px;
+    background-color: #fff;
+    border: 1px solid #d6d6e7;
+    border-radius: 3px;
+    color: rgb(35, 38, 59);
+    box-shadow: inset 0 1px 4px 0 rgb(119 122 175 / 30%);
+    overflow: hidden;
+    transition: all 100ms ease-in-out;
 
+}
+
+.instruction:focus {
+    border-color: #3c4fe0;
+    box-shadow: 0 1px 0 0 rgb(35 38 59 / 5%);
+}
 .delievery-wrapper > div {
 width: 10%;
 min-height: 10rem;
@@ -546,6 +572,7 @@ box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 .delievery-wrapper > div img {
     max-width: 4rem;
+    
     }
 
     .delievery-wrapper > div p {
@@ -592,6 +619,29 @@ box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
     .login-wrapper {
         background-size: 40%;
     }
+
+
+    .deals-wrapper {
+        width: 100%;
+    }
+
+
+
+
+.foods {
+    min-width: 20rem;
+}
+
+
+
+.deal-img {
+    width: 100%;
+    min-height: 15rem;
+    object-fit: cover;
+}
+
+
+
 
 }
 
