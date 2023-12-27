@@ -12,9 +12,7 @@ const AdminNavigation = () => {
     <ul>
         <NavLink to='.'><li>Dashboard</li></NavLink>
         <NavLink to='editdeals'><li>Add/Edit Deals</li></NavLink>
-        <NavLink to='editmenu'><li>Add/Edit Menu</li></NavLink>
-        <NavLink to='sellreports'><li>Sell Reports</li></NavLink>
-        <NavLink to='statics'><li>Website Statics</li></NavLink>
+        <NavLink to='/'><li>Go To Home</li></NavLink>
     </ul>
 
     </div>

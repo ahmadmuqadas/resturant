@@ -80,11 +80,6 @@ const Modal = ({ isModalOpen, toggleModal, foodState }) => {
     </button>
   </div>;
 
-  //   tommowrow's to do:
-
-  // fixing the modal orders and sending to firebase database.
-  // recieving the order on Admin dashboard.
-  //sending the order to gmail account.
 
   const borderDelivery = {
     border: order.FoodSubmitionMethid === "Delivery" ? "solid #3f3400 1px" : "",

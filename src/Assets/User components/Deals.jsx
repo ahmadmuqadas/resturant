@@ -1,30 +1,11 @@
 import React, { useState } from 'react'
 import serving from '../Media/delicious.png'
 import { motion } from 'framer-motion';
-import { database } from '../../FirebaseConfig';
-import { get, ref } from 'firebase/database';
 import { useLoaderData } from 'react-router-dom';
 import Modal from './utils/Modal';
+import { fetchDatabase } from './utils/FetchDealsDatabase';
 
 
-
-async function fetchDatabase() {
-  const dbRef = ref(database);
-  try {
-    const snapshot = await get(dbRef);
-
-    if (snapshot.exists()) {
-      const retData = snapshot.val();
-      return retData;
-    } else {
-    
-      return null;
-    }
-  } catch (err) {
-    console.log(err);
-    return null;
-  }
-}
 
 
 export function loader() {
@@ -65,7 +46,7 @@ const menuArray = menu.foodCategories;
       >
         <h2 className='cat-name'>{category.category}</h2>
         <div className='food-wrapper'>
-          {category.foods.map((food, foodIndex) => (
+          {Array.isArray(category.foods) && category.foods.map((food, foodIndex) => (
             <div key={foodIndex} className='foods'>
               <div className='food-img-wrapper'>
                 <img src={food.img} alt="" className='deal-img' />
@@ -88,9 +69,7 @@ const menuArray = menu.foodCategories;
     );
   });
  
-// Problems:
-  // button function opens toggle buttton modal does not know what is selected.
-  // add more does not update the Card Popup.
+
 
 
   return (

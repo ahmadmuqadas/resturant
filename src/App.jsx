@@ -1,60 +1,62 @@
-import React, { useEffect, useState } from "react";
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, } from "react-router-dom";
-import { Home, MainNav } from './Assets/User components/UserImports';
-import './Assets/User components/StyledComponents/style.css';
-import LogIn, {LoginAction,} from "./Assets/User components/LogIn";
+import React from "react";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
+import { Home, MainNav } from "./Assets/User components/UserImports";
+import "./Assets/User components/StyledComponents/style.css";
 import Dashboard from "./Assets/Admin components/Dashboard";
 import AdminLayout from "./Assets/Admin components/AdminLayout";
-import EditDeals from "./Assets/Admin components/EditDeals";
+import EditDeals, {editDealsLoader} from "./Assets/Admin components/EditDeals";
 import { loader } from "./Assets/User components/Deals";
-import AdminLogin, {action} from "./Assets/Admin components/AdminLogin";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "./FirebaseConfig";
 import CheckOut from "./Assets/User components/utils/CheckOut";
+import Reservation from "./Assets/User components/Reservation";
+import About from "./Assets/User components/About";
+import Contact from "./Assets/User components/Contact";
+import LogIn from "./Assets/User components/LogIn";
+import SignUp from "./Assets/User components/SignUp";
+import { modalAction } from "./Assets/Admin components/AddDealModal";
 
 function App() {
-  
-const [userlog, setUserLog]= useState(null);
+  const takeRouter = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        <Route path="*" element={<code>404 Not Found</code>} />
+        <Route path="/" element={<MainNav />}>
+          <Route path="reservation" element={<Reservation />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="about" element={<About />} />
+          <Route path="login" element={<LogIn/>}/>
+          <Route path="Signup" element={<SignUp/>}/>
+          <Route path="checkout" element={<CheckOut />} />
 
-  useEffect(() => {
+          <Route
+            index
+            element={<Home />}
+            loader={loader}
+            errorElement={<h1>Oh! there was an error!</h1>}
+          />
+        </Route>
+        <Route
+          path="admin"
+          element={<AdminLayout />}
+          loader={async () => {
+            return null;
+          }}
+        >
+          <Route index element={<Dashboard />} />
+          <Route path="editdeals" element={<EditDeals />} action={modalAction} loader={editDealsLoader} />
+        </Route>
+      </>
+    )
+  );
 
-    const listen = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUserLog(user)
-      }
-      else {
-        setUserLog(null)
-      }
-    })
-  },[])
-
-
-  const takeRouter = createBrowserRouter(createRoutesFromElements(
-    <>
-    <Route path="*" element={<code>404 Not Found</code>}/>
-    <Route path="/"   element={<MainNav userLogStatus={userlog ? true : false} />} >
-    <Route path="checkout" element={<CheckOut/>}/>
-    <Route path="adminlogin" action={action} element={<AdminLogin/>}/>
-      <Route index element={<Home />} loader={loader} errorElement={<h1>Oh! there was an error!</h1>} />
-      <Route path="login" element={<LogIn userLogStatus={userlog ? true : false} />} action={LoginAction}  />
-
-    </Route>
-    <Route path="admin" element={<AdminLayout />} loader={async () => {
-    
-    return null
-    }}>
-      <Route index element={<Dashboard />} />
-      <Route path="editdeals" element={<EditDeals />} />
-    
-    </Route>
-    </>
-  ))
-  
   return (
     <>
       <div className="app">
-        
-        <RouterProvider router={takeRouter}/>
+        <RouterProvider router={takeRouter} />
       </div>
     </>
   );

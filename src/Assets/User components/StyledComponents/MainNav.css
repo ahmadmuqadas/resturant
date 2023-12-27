@@ -1,0 +1,39 @@
+nav {
+  position: sticky;
+  height: 0;
+  top: 0;
+  max-width: 1920px;
+  z-index: 2;
+  margin: auto;
+}
+
+.burger-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  min-height: 5rem;
+  background-color: rgba(102, 68, 5, 0.479);
+  /* i will choose later here the navbar to have background intially or not */
+}
+.mobile-logo {
+  display: block;
+  max-width: 3rem;
+}
+
+.navigation-ul {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  left: 0;
+  padding: 1rem;
+  list-style-type: none;
+  transition: ease-in-out 0.1s;
+}
+
+.navigation-ul li {
+  margin: 1rem 0;
+  font-family: "PTSansNarrow";
+  color: var(--white);  
+}
+

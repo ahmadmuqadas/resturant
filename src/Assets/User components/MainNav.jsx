@@ -4,6 +4,7 @@ import Logo from "../Media/logo.png";
 import Footer from "./Footer";
 import { signOut } from "firebase/auth";
 import { auth } from "../../FirebaseConfig";
+import '../User components/StyledComponents/MainNav.css'
 
 // later ill use seprate file for signout:
 
@@ -70,7 +71,7 @@ const MainNav = ({ userLogStatus }) => {
 
   // Styles for navigation link items
   const liStyles = {
-    color: pathname !== "/" || scrollPos > 50 ? '#3f3400' : "",
+    color: pathname !== "/" || scrollPos > 50 ? "#3f3400" : "",
   };
 
   function logOut() {
@@ -97,36 +98,29 @@ const MainNav = ({ userLogStatus }) => {
         </div>
         {/* Navigation links */}
         <ul className="navigation-ul" style={toggleCondition}>
-          <NavLink to='/'>
+          <NavLink to="/">
             <li style={liStyles}>HOME</li>
           </NavLink>
-      
-          <NavLink to='reservation'>
+
+          <NavLink to="reservation">
             <li style={liStyles}>RESERVATION</li>
           </NavLink>
-          <NavLink to='contact'>
+          <NavLink to="contact">
             <li style={liStyles}>CONTACT</li>
           </NavLink>
-          <NavLink to='about'>
+          <NavLink to="about">
             <li style={liStyles}>ABOUT</li>
           </NavLink>
-          <NavLink to='admin'>
-            <li style={liStyles}>ADMIN</li>
+          <NavLink to="login">
+            <li style={liStyles}>LOG IN</li>
           </NavLink>
 
-          {userLogStatus ? (
-            <li>
-              <ul>
-                <li>user</li>
-                <li onClick={logOut}>Log out</li>
-              </ul>
-            </li>
-          ) : (
-            <NavLink to="login">
-              {" "}
-              <li style={liStyles}>LOG IN</li>
-            </NavLink>
-          )}
+          <NavLink to="signup">
+            <li style={liStyles}>SIGN UP</li>
+          </NavLink>
+          <NavLink to="admin">
+            <li style={liStyles}>ADMIN</li>
+          </NavLink>
         </ul>
       </nav>
 
