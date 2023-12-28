@@ -32,40 +32,41 @@ function toggleModal(foodName) {
 
 const menuArray = menu.foodCategories;
 
+// console.log(menuArray[0].foods['NmjSlz05QXb5gjkW1mZ']);
+
   const categories = menuArray.map((category) => {
 
     return (
       
       <motion.div
-        key={category.name}  
-        initial={{ y: 200, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-        viewport={{ once: true }}
-        className='foods-cat'
-      >
-        <h2 className='cat-name'>{category.category}</h2>
-        <div className='food-wrapper'>
-          {Array.isArray(category.foods) && category.foods.map((food, foodIndex) => (
-            <div key={foodIndex} className='foods'>
-              <div className='food-img-wrapper'>
-                <img src={food.img} alt="" className='deal-img' />
-                <span className='serving-span'>
-                  <img src={serving} alt="" className='serving-img' />
-                  <p className='food-item serving'>X {food.serves}</p>
-                </span>
-              </div>
-              <div className="food-item-wrapper">
-                <p className='food-item food-name'>{ food.name}</p>
-                <p className='food-item food-price'>{`$${food.price}`}</p>
-                <button className='select-btn' onClick={() => toggleModal(food.name)}>Select</button>
-
-              
-              </div>
+      key={category.name}  
+      initial={{ y: 200, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.5 }}
+      viewport={{ once: true }}
+      className='foods-cat'
+    >
+      <h2 className='cat-name'>{category.category}</h2>
+      <div className='food-wrapper'>
+        {category.foods && Object.entries(category.foods).map(([key, food]) => (
+          <div key={key} className='foods'>
+            <div className='food-img-wrapper'>
+              <img src={food.img} alt="" className='deal-img' />
+              <span className='serving-span'>
+                <img src={serving} alt="" className='serving-img' />
+                <p className='food-item serving'>X {food.serves}</p>
+              </span>
             </div>
-          ))}
-        </div>
-      </motion.div>
+            <div className="food-item-wrapper">
+              <p className='food-item food-name'>{ food.name}</p>
+              <p className='food-item food-price'>{`$${food.price}`}</p>
+              <button className='select-btn' onClick={() => toggleModal(food.name)}>Select</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+    
     );
   });
  

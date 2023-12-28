@@ -17,7 +17,6 @@ const EditDeals = () => {
   const [toggle, setToggle] = useState(false);
   const [catagoryIndexAndName, setCatagoryIndexAndName] = useState({})
 
-  console.log(menu.foodCategories[0].foods[3]);
   function handleModalToggle(cat, index){
     setToggle(prev => !prev )
     setCatagoryIndexAndName({cat, index})
@@ -49,13 +48,13 @@ const EditDeals = () => {
       });
   };
 
-  const tableData = foodCategories.map((cat, index) => (
-    <div key={index} className="table-wrapper">
+  const tableData = foodCategories.map((cat, catIndex) => (
+    <div key={catIndex} className="table-wrapper">
       <div className="edit-deal-cat">
-        <button className="add-foodcat-btn" onClick={() => handleModalToggle(cat, index)}>
+        <button className="add-foodcat-btn" onClick={() => handleModalToggle(cat, catIndex)}>
           Add to <b>{cat.category}</b>
-          </button>
-        </div>
+        </button>
+      </div>
       <table>
         <thead>
           <tr>
@@ -68,9 +67,9 @@ const EditDeals = () => {
           </tr>
         </thead>
         <tbody>
-          {Array.isArray(cat.foods) && cat.foods.map((food, foodIndex) => (
-            <tr key={foodIndex}>
-              <td className="food-index">{foodIndex + 1}</td>
+          {cat.foods && Object.entries(cat.foods).map(([foodKey, food]) => (
+            <tr key={foodKey}>
+              <td className="food-index">{foodKey}</td>
               <td>{food.name}</td>
               <td>${food.price}</td>
               <td>{food.serves}</td>
@@ -85,7 +84,7 @@ const EditDeals = () => {
                 </div>
               </td>
               <td>
-                <img src={DeleteIcon} alt="Delete" className="delete-icon" onClick={() => deleteFood(index, foodIndex, food.name)} />
+                <img src={DeleteIcon} alt="Delete" className="delete-icon" onClick={() => deleteFood(catIndex, foodKey, food.name)} />
               </td>
             </tr>
           ))}
@@ -93,6 +92,7 @@ const EditDeals = () => {
       </table>
     </div>
   ));
+  
 
   return (
 <div className="editDeal-wrapper">

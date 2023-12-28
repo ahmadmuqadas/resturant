@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState, useRef } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import Logo from "../Media/logo.png";
+import BurgerMenu from '../Media/menu.png'
 import Footer from "./Footer";
 import { signOut } from "firebase/auth";
 import { auth } from "../../FirebaseConfig";
@@ -89,7 +89,7 @@ const MainNav = ({ userLogStatus }) => {
       <nav style={navStyles} ref={navRef}>
         <div className="burger-container">
           <img
-            src={Logo}
+            src={BurgerMenu}
             alt="logo"
             className="mobile-logo"
             onClick={toggler}

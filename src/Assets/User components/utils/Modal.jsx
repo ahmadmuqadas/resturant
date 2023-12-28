@@ -15,7 +15,7 @@ const Modal = ({ isModalOpen, toggleModal, foodState }) => {
     orderedFood: null,
   });
 
-  console.log(order);
+
 
   function orderCounterIncrease() {
     setOrder((prev) => {
@@ -64,7 +64,6 @@ const Modal = ({ isModalOpen, toggleModal, foodState }) => {
   function handleCheckout() {
     if (order.FoodSubmitionMethid && order.orderedFood !== '') {
       localStorage.setItem("order", JSON.stringify(order));
-      console.log('fired more');
       navigate('checkout');
     } else {
       // Handle the error case, e.g., set an error state and show an error message
